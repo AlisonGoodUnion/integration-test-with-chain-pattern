@@ -1,6 +1,6 @@
-package com.example.example.simulacaocredito.service
+package com.example.example.simulacaocredito.service.commons
 
-import com.example.example.simulacaocredito.model.dto.ValoresResponseDTO
+import com.example.example.simulacaocredito.service.dto.ValoresResponseDTO
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 
@@ -9,9 +9,8 @@ import java.math.BigDecimal
 class ValoresService : IValoresService {
 
     //TODO simulacao consumo de service ou banco
-    override fun obterValores(): ValoresResponseDTO {
+    override fun obterValores(idProposta: Long): ValoresResponseDTO {
         return ValoresResponseDTO(
-            valorSugerido = BigDecimal(10000L),
             valorFinanciado = BigDecimal(20000L)
         )
     }
