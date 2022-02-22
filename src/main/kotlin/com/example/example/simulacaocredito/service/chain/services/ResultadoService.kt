@@ -14,12 +14,16 @@ class ResultadoService {
 
     fun obter(processoDTO: ProcessoDTO): ResultadoSimulacaoResponseDTO {
 
-        this.mensagem = "Taxas encoontradas para o valor? ${processoDTO.valorFinanciado}"
+        if (processoDTO.taxaJuros == BigDecimal.ZERO) {
+            throw RuntimeException("Taxa de Juros invalida")
+        }
+
+        this.mensagem = "Taxas encoontradas para o valor: ${processoDTO.valorFinanciado}"
         if (processoDTO.taxaJuros!! < BigDecimal(5)) {
             this.mensagem = "Menores taxas encoontradas para o valor? ${processoDTO.valorFinanciado}"
         }
 
-        val limitePermitido = processoDTO.valorFinanciado!! > limitePermitido
+        val limitePermitido = processaAi(processoDTO)
         this.tipoResultado = if (limitePermitido) "APROVADO" else "REPROVADO"
 
         return ResultadoSimulacaoResponseDTO(
@@ -28,4 +32,7 @@ class ResultadoService {
             mensagem = this.mensagem
         )
     }
+
+    private fun processaAi(processoDTO: ProcessoDTO) =
+        processoDTO.valorFinanciado!! > limitePermitido
 }

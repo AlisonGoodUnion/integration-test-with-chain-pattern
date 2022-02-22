@@ -17,7 +17,6 @@ class CreditoService @Autowired constructor(
         val processoDTO = ProcessoDTO(simulacaoCreditoRequestDTO.id)
 
         processoSimulacao.forEach { it.execute(processoDTO) }
-
         return resultadoService.obter(processoDTO)
     }
 }

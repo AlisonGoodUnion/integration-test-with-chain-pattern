@@ -24,6 +24,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	testCompileOnly("org.mockito:mockito-junit-jupiter")
 }
 
 tasks.withType<KotlinCompile> {

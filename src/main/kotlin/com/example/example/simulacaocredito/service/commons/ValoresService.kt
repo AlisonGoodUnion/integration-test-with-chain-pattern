@@ -10,8 +10,9 @@ class ValoresService : IValoresService {
 
     //TODO simulacao consumo de service ou banco
     override fun obterValores(idProposta: Long): ValoresResponseDTO {
-        return ValoresResponseDTO(
-            valorFinanciado = BigDecimal(20000L)
-        )
+
+        //BANCO *
+        //SERVICO
+        return ValoresResponseDTO(valorFinanciado = BigDecimal(20000L))
     }
 }
