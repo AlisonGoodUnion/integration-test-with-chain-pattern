@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration.FlywayConfiguration
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
+import org.springframework.test.context.jdbc.Sql
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -27,7 +29,6 @@ import java.math.BigDecimal
 )
 @ExtendWith(SpringExtension::class)
 @AutoConfigureMockMvc
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class SimulacaoCreditoControllerTestIT {
 
     @Autowired
@@ -57,7 +58,7 @@ internal class SimulacaoCreditoControllerTestIT {
     @Test
     fun `Deve criar taxa`() {
         val taxaDTO = TaxaDTO(2, "CDI", BigDecimal.TEN)
-        mvc.perform(post("/v1/taxas")
+        mvc.perform(post("/v1/taxa")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(toJson(taxaDTO))
         )

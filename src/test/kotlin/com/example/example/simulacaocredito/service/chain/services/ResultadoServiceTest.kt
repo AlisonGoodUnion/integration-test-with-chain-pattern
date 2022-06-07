@@ -28,6 +28,12 @@ internal class ResultadoServiceTest {
     // deveRetornarMSGTaxaQuandoValorMaiorCinco()
     // deveRetornarMSGTaxaQuandoValorMaiorCinco()
 
+    //sucees
+        // preciso buscar taxas ativas
+    //falhas
+        // banco ta fora.
+        // voltou taxa ativa... deve dar erro!
+
     @Test
     fun deveObterResultadoReprovadoQuandoLimiteMenor() {
         val obtained = resultadoService.obter(processoMock)

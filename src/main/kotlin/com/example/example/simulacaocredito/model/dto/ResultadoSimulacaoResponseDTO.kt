@@ -4,5 +4,4 @@ data class ResultadoSimulacaoResponseDTO(
     var idProposta: Long,
     var tipoResultado: String,
     var mensagem: String
-
  )

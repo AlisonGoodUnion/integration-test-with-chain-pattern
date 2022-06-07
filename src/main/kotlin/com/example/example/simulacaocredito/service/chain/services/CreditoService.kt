@@ -54,6 +54,7 @@ class CreditoService @Autowired constructor(
         val taxas = taxaRepository.findAll()
         return taxas.stream()
                 .map { TaxaDTO(it.id!!, it.nome, it.valor) }
+
                 .collect(Collectors.toList())
     }
 }
